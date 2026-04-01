@@ -1,0 +1,27 @@
+torch
+numpy
+opencv-python
+Pillow
+scipy
+
+# ONNX Runtime for AI Upscaling
+# ==============================================================================
+# IMPORTANT: Run install.bat for automatic GPU/CPU detection and installation
+# ==============================================================================
+#
+# install.bat will:
+# 1. Detect if PyTorch has CUDA support
+# 2. Ask you to choose GPU or CPU version
+# 3. Install the correct ONNX Runtime version
+# 4. Validate GPU activation
+#
+# Manual Installation (if not using install.bat):
+# ------------------------------------------------
+# For GPU (NVIDIA only, requires PyTorch with CUDA or CUDA 12.x Toolkit):
+#   pip install onnxruntime-gpu>=1.16.0
+#
+# For CPU (works everywhere, slower for AI upscaling):
+#   pip install onnxruntime>=1.16.0
+#
+# Default below is CPU version for compatibility:
+onnxruntime>=1.16.0
