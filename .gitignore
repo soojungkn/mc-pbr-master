@@ -1,0 +1,48 @@
+### Python ###
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+### 가상환경 (Virtual Environments) ###
+venv/
+.venv/
+ENV/
+
+### OS 관련 파일 ###
+.DS_Store
+Thumbs.db
+
+### ComfyUI 및 작업 관련 임시 파일 ###
+*.log
+/js/__pycache__/
+
+### AI 모델 파일 ###
+models/
+
+### Vendored JS libraries (downloaded by install.bat, not committed) ###
+js/three.min.js
+js/GLTFLoader.js
+
+### 로컬 로그 / pip 출력 / 임시 노트 ###
+# pip install 출력 등 로컬 경로가 포함될 수 있는 파일
+[0-9]*
+*.txt.bak
+local_*
