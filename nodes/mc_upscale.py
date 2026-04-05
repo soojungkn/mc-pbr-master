@@ -28,6 +28,11 @@ except ImportError as e:
     print("="*60 + "\n")
     raise ImportError("onnxruntime is required for MC: AI Upscale node. See error message above.") from e
 
+# Resolve the ComfyUI upscale_models directory
+MODELS_DIR = os.path.normpath(
+    os.path.join(os.path.dirname(__file__), "..", "..", "..", "models", "upscale_models")
+)
+
 # Model configuration mapping
 MODEL_CONFIGS = {
     "High Details": {
@@ -55,7 +60,6 @@ class MC_ImageUpscaleNode:
 
     # Class-level model cache (shared across instances)
     _model_cache = {}
-    _models_dir = None
 
     # Enable preview UI in the node
     OUTPUT_NODE = True
@@ -66,14 +70,6 @@ class MC_ImageUpscaleNode:
         self.type = "temp"
         self.prefix_append = "_mc_upscale_" + ''.join(random.choice('abcdefghijklmnopqrstuvwxyz') for _ in range(5))
         self.compress_level = 4
-
-    @classmethod
-    def _get_models_dir(cls):
-        """Get the models directory path (lazy initialization)."""
-        if cls._models_dir is None:
-            package_root = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-            cls._models_dir = os.path.join(package_root, "models")
-        return cls._models_dir
 
     @classmethod
     def INPUT_TYPES(cls):
@@ -471,14 +467,14 @@ class MC_ImageUpscaleNode:
 
         # Get model path
         model_config = MODEL_CONFIGS[model_name]
-        models_dir = self._get_models_dir()
-        model_path = os.path.join(models_dir, model_config["filename"])
+        model_path = os.path.join(MODELS_DIR, model_config["filename"])
 
         # Validate model exists
         if not os.path.exists(model_path):
             raise FileNotFoundError(
                 f"Model file not found: {model_path}\n\n"
-                f"Please place ONNX models in: {models_dir}\n"
+                f"Please place ONNX models in: {MODELS_DIR}\n"
+                f"  (ComfyUI/models/upscale_models/)\n"
                 f"Required files:\n"
                 f"  - swin2SR-classical-sr-x4-64.onnx\n"
                 f"  - swin2SR-realworld-sr-x4.onnx\n"

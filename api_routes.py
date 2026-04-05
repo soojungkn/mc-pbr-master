@@ -1,56 +1,81 @@
 """
 Custom API routes for MicroCreativity-PBR-Master.
-Provides server-side folder picker dialog.
+Provides a native OS folder picker dialog.
+
+Platform support:
+  Windows  -> PowerShell FolderBrowserDialog  (native, always on top)
+  macOS    -> osascript / AppleScript          (native Finder dialog)
 """
 
 from aiohttp import web
 import server
-import threading
+import asyncio
+import subprocess
+import sys
 
 
-def _pick_folder_sync(initial_dir=None):
-    """Open a native OS folder picker dialog (runs on the SERVER machine).
-    Must run in the main thread on macOS, so we use threading for safety."""
-    result = {"path": None}
+def _pick_folder_windows(initial_dir: str) -> str | None:
+    """Use PowerShell's FolderBrowserDialog — reliable, always on top."""
+    set_path = f'$d.SelectedPath = "{initial_dir}"' if initial_dir else ""
+    script = (
+        "Add-Type -AssemblyName System.Windows.Forms; "
+        "$d = New-Object System.Windows.Forms.FolderBrowserDialog; "
+        '$d.Description = "Select Save Folder"; '
+        "$d.ShowNewFolderButton = $true; "
+        f"{set_path}; "
+        "if ($d.ShowDialog() -eq 'OK') { Write-Output $d.SelectedPath }"
+    )
+    try:
+        result = subprocess.run(
+            ["powershell", "-NoProfile", "-NonInteractive", "-Command", script],
+            capture_output=True,
+            text=True,
+            timeout=120,
+        )
+        path = result.stdout.strip()
+        return path if path else None
+    except Exception as e:
+        print(f"[MC PBR] PowerShell folder picker error: {e}")
+        return None
 
-    def _run():
-        try:
-            import tkinter as tk
-            from tkinter import filedialog
-            root = tk.Tk()
-            root.withdraw()
-            root.attributes("-topmost", True)  # Bring to front
-            path = filedialog.askdirectory(
-                title="Select Save Folder",
-                initialdir=initial_dir
-            )
-            root.destroy()
-            if path:
-                result["path"] = path
-        except Exception as e:
-            print(f"[MC PBR] Folder picker error: {e}")
 
-    # Run in a thread to avoid blocking the event loop
-    t = threading.Thread(target=_run)
-    t.start()
-    t.join(timeout=120)  # Wait up to 2 minutes for user to pick
+def _pick_folder_macos(initial_dir: str) -> str | None:
+    """Use osascript / AppleScript — opens native Finder folder chooser."""
+    default_clause = (
+        f' default location POSIX file "{initial_dir}"' if initial_dir else ""
+    )
+    script = f'POSIX path of (choose folder with prompt "Select Save Folder"{default_clause})'
+    try:
+        result = subprocess.run(
+            ["osascript", "-e", script],
+            capture_output=True,
+            text=True,
+            timeout=120,
+        )
+        path = result.stdout.strip().rstrip("/")
+        return path if path else None
+    except Exception as e:
+        print(f"[MC PBR] osascript folder picker error: {e}")
+        return None
 
-    return result["path"]
+
+def _pick_folder_sync(initial_dir: str = "") -> str | None:
+    if sys.platform == "win32":
+        return _pick_folder_windows(initial_dir)
+    elif sys.platform == "darwin":
+        return _pick_folder_macos(initial_dir)
+    else:
+        print("[MC PBR] Folder picker is only supported on Windows and macOS.")
+        return None
 
 
 @server.PromptServer.instance.routes.post("/mc/pick_folder")
 async def pick_folder_handler(request):
-    """API endpoint that opens a native folder picker on the server."""
-    import asyncio
-
+    """Open a native OS folder picker and return the chosen path."""
     data = await request.json() if request.can_read_body else {}
-    initial_dir = data.get("initial_dir", None)
+    initial_dir = data.get("initial_dir", "") or ""
 
-    # Run the blocking tkinter dialog in a thread pool
     loop = asyncio.get_event_loop()
     path = await loop.run_in_executor(None, _pick_folder_sync, initial_dir)
 
-    if path:
-        return web.json_response({"path": path})
-    else:
-        return web.json_response({"path": None})
+    return web.json_response({"path": path})

@@ -22,7 +22,7 @@ Download a preset, drop it into ComfyUI, and start creating immediately.
 ### 🗺️ Map Generation
 | Node | Description |
 |------|-------------|
-| **MC: Albedo Prompt Engine** | AI-assisted prompt builder for generating albedo/base color textures |
+| **MC: Albedo Prompt Engine** | Prompt builder for generating albedo/base color maps |
 | **MC: Height Map** | Extract a height map from any image with channel selection, levels, and gamma correction |
 | **MC: Roughness** | Derive a roughness map with levels and gamma controls |
 | **MC: Metallic** | Derive a metallic map with levels and gamma controls |
@@ -59,7 +59,7 @@ Download a preset, drop it into ComfyUI, and start creating immediately.
 
 ## 🤖 AI Upscale Models
 
-The **MC: AI Image Upscale** node requires Swin2SR ONNX model files placed in the `models/` folder inside this package:
+The **MC: AI Image Upscale** node requires Swin2SR ONNX model files placed in the `models/upscale_models/` folder in ComfyUI:
 
 | File | Mode | Scale | Best For |
 |------|------|-------|----------|
@@ -67,13 +67,23 @@ The **MC: AI Image Upscale** node requires Swin2SR ONNX model files placed in th
 | `swin2SR-realworld-sr-x4.onnx` | Noise Reduction | 4× | Noisy or compressed images |
 | `swin2SR-lightweight-x2-64.onnx` | Lightweight | 2× | Faster processing |
 
+## 🔗 Model links (for AI Image Upscale Node)
+- Download "model.onnx" from each link, and rename the files to each model name.
+
+**swin2SR models**
+- [swin2SR-classical-sr-x4-64](https://huggingface.co/Xenova/swin2SR-classical-sr-x4-64/tree/main/onnx)
+- [swin2SR-realworld-sr-x4](https://huggingface.co/Xenova/swin2SR-realworld-sr-x4-64-bsrgan-psnr/tree/main/onnx)
+- [swin2SR-lightweight-x2-64](https://huggingface.co/Xenova/swin2SR-lightweight-x2-64/tree/main/onnx)
+
 Download the ONNX model files and place them in:
 ```
-MicroCreativity-PBR-Master/
-└── models/
-    ├── swin2SR-classical-sr-x4-64.onnx
-    ├── swin2SR-realworld-sr-x4.onnx
-    └── swin2SR-lightweight-x2-64.onnx
+📂 ComfyUI/
+└── 📂 models/
+      └── 📂 upscale_models/
+             ├── swin2SR-classical-sr-x4-64.onnx
+             ├── swin2SR-realworld-sr-x4.onnx
+             └── swin2SR-lightweight-x2-64.onnx
+
 ```
 
 > **CUDA note:** The upscaler supports CUDA → DirectML → CPU execution in priority order. If GPU inference silently falls back to CPU, re-run `install.bat` or reinstall PyTorch with CUDA:
@@ -99,8 +109,6 @@ MicroCreativity-PBR-Master/
 
 ## 🚀 Installation
 
-### Automatic (Recommended)
-
 1. Clone this repository into your `ComfyUI/custom_nodes/` folder
 
 2. **Run `install.bat`** — it will:
@@ -111,24 +119,34 @@ MicroCreativity-PBR-Master/
 
 3. Restart ComfyUI.
 
-### Manual
-
-```bash
-pip install torch numpy opencv-python Pillow scipy
-
-# NVIDIA GPU (recommended)
-pip install onnxruntime-gpu>=1.16.0
-
-# CPU only
-pip install onnxruntime>=1.16.0
-```
-
 ---
 
 ## 🗂️ Node Categories
 
 All nodes appear under the **`MC_PBR_Master`** category in the ComfyUI node browser. Map generation nodes appear under **`MC_PBR_Master/Map Generation`**.
 
+---
+
+## 🧩 Typical Workflow
+
+```
+[Image / AI Generation]
+        │
+        ├─► MC: Height Map ──► MC: Height to Normal
+        │         │
+        │         └──► MC: Ambient Occlusion
+        │
+        ├─► MC: Roughness
+        ├─► MC: Metallic
+        │
+        ├─► MC: RGB Channel Packer  (ORM texture)
+        │
+        ├─► MC: AI Image Upscale    (optional)
+        ├─► MC: Tile Checker        (validate seamless)
+        ├─► MC: 3D Texture Preview  (real-time WebGL)
+        │
+        └─► MC: PBR Texture Export  (save to disk)
+```
 ---
 
 ## 🛠️ Troubleshooting

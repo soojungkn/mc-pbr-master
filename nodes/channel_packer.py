@@ -16,8 +16,8 @@ class ChannelPackerNode:
     FUNCTION = "pack_channels"
     CATEGORY = "MC_PBR_Master"
 
-    def pack_channels(self, Occlusion_R=None, Roughness_G=None, Metallic_B=None):
-        active_input = next((img for img in [Occlusion_R, Roughness_G, Metallic_B] if img is not None), None)
+    def pack_channels(self, R=None, G=None, B=None):
+        active_input = next((img for img in [R, G, B] if img is not None), None)
         
         if active_input is None:
             return (torch.zeros((1, 64, 64, 3), dtype=torch.float32),)
@@ -30,9 +30,9 @@ class ChannelPackerNode:
             else:
                 return np.zeros((height, width), dtype=np.float32)
 
-        r = process_channel(Occlusion_R)
-        g = process_channel(Roughness_G)
-        b = process_channel(Metallic_B)
+        r = process_channel(R)
+        g = process_channel(G)
+        b = process_channel(B)
         
         merged_rgb = np.stack([r, g, b], axis=-1)
         return (torch.from_numpy(merged_rgb).unsqueeze(0),)
