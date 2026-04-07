@@ -345,38 +345,41 @@ if exist "%JS_DIR%\GLTFLoader.js" (
     echo   ✗ js/GLTFLoader.js [MISSING - 3D preview may not work]
 )
 echo.
+REM ============================================
+REM The upscale node uses ComfyUI's standard upscale_models folder
+REM install.bat lives at: ComfyUI/custom_nodes/mc-pbr-master/
+REM So going up 2 levels (..\..) reaches ComfyUI/
+REM ============================================
+
+REM Resolve the absolute path to ComfyUI/models/upscale_models/
+for %%i in ("%SCRIPT_DIR%..\..") do set "UPSCALE_MODELS_DIR=%%~fi\models\upscale_models"
+
 echo ========================================
 echo  AI Upscale Models Status
 echo ========================================
 echo.
-echo Checking for ONNX models in: models\
+echo Checking ComfyUI's upscale_models folder:
+echo   %UPSCALE_MODELS_DIR%
 echo.
-
-REM Create models directory if it doesn't exist
-if not exist "models\" (
-    echo Creating models directory...
-    mkdir models
-    echo.
-)
 
 REM Check for models
 set MODEL_COUNT=0
 
-if exist "models\swin2SR-classical-sr-x4-64.onnx" (
+if exist "%UPSCALE_MODELS_DIR%\swin2SR-classical-sr-x4-64.onnx" (
     set /a MODEL_COUNT+=1
     echo   ✓ swin2SR-classical-sr-x4-64.onnx
 ) else (
     echo   ✗ swin2SR-classical-sr-x4-64.onnx [MISSING]
 )
 
-if exist "models\swin2SR-realworld-sr-x4.onnx" (
+if exist "%UPSCALE_MODELS_DIR%\swin2SR-realworld-sr-x4.onnx" (
     set /a MODEL_COUNT+=1
     echo   ✓ swin2SR-realworld-sr-x4.onnx
 ) else (
     echo   ✗ swin2SR-realworld-sr-x4.onnx [MISSING]
 )
 
-if exist "models\swin2SR-lightweight-x2-64.onnx" (
+if exist "%UPSCALE_MODELS_DIR%\swin2SR-lightweight-x2-64.onnx" (
     set /a MODEL_COUNT+=1
     echo   ✓ swin2SR-lightweight-x2-64.onnx
 ) else (
@@ -392,7 +395,9 @@ if %MODEL_COUNT%==3 (
     echo.
     echo ⚠️  WARNING: Some ONNX models are missing!
     echo.
-    echo Please place the following files in: %CD%\models\
+    echo Please place the following files in:
+    echo   %UPSCALE_MODELS_DIR%
+    echo.
     echo   - swin2SR-classical-sr-x4-64.onnx
     echo   - swin2SR-realworld-sr-x4.onnx
     echo   - swin2SR-lightweight-x2-64.onnx
@@ -407,7 +412,7 @@ echo ========================================
 echo.
 echo 1. Restart ComfyUI completely
 echo 2. Refresh your browser/app
-echo 3. Find "MC: AI Image Upscale" in: MC_PBR_Master/Adjustment
+echo 3. Find "MC: AI Image Upscale" in: MC_PBR_Master
 echo.
 echo Features Available:
 echo   ✓ Live tile-by-tile preview

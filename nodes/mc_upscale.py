@@ -28,8 +28,10 @@ except ImportError as e:
     print("="*60 + "\n")
     raise ImportError("onnxruntime is required for MC: AI Upscale node. See error message above.") from e
 
-# Resolve the ComfyUI upscale_models directory
-MODELS_DIR = os.path.normpath(
+# Resolve the ComfyUI upscale_models directory using the standard folder_paths API
+# This respects extra_model_paths.yaml and any user-configured paths
+_upscale_paths = folder_paths.get_folder_paths("upscale_models")
+MODELS_DIR = _upscale_paths[0] if _upscale_paths else os.path.normpath(
     os.path.join(os.path.dirname(__file__), "..", "..", "..", "models", "upscale_models")
 )
 
@@ -473,8 +475,8 @@ class MC_ImageUpscaleNode:
         if not os.path.exists(model_path):
             raise FileNotFoundError(
                 f"Model file not found: {model_path}\n\n"
-                f"Please place ONNX models in: {MODELS_DIR}\n"
-                f"  (ComfyUI/models/upscale_models/)\n"
+                f"Please place ONNX models in ComfyUI's upscale_models folder:\n"
+                f"  {MODELS_DIR}\n"
                 f"Required files:\n"
                 f"  - swin2SR-classical-sr-x4-64.onnx\n"
                 f"  - swin2SR-realworld-sr-x4.onnx\n"
