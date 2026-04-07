@@ -22,7 +22,7 @@ cd /d "%SCRIPT_DIR%"
 
 REM Method 1: Portable Version (python_embeded)
 REM Structure: ComfyUI_windows_portable/python_embeded/python.exe
-REM           ComfyUI_windows_portable/ComfyUI/custom_nodes/YOUR_NODE/
+REM           ComfyUI_windows_portable/ComfyUI/custom_nodes/mc-pbr-master-main/
 if exist "..\..\python_embeded\python.exe" (
     for %%i in ("..\..\python_embeded\python.exe") do set "PYTHON_CMD=%%~fi"
     set "INSTALL_TYPE=Portable (python_embeded)"
@@ -31,7 +31,7 @@ if exist "..\..\python_embeded\python.exe" (
 
 REM Method 2: Desktop App / Manual Install with venv
 REM Structure: ComfyUI/.venv/Scripts/python.exe
-REM           ComfyUI/custom_nodes/YOUR_NODE/
+REM           ComfyUI/custom_nodes/mc-pbr-master-main/
 if exist "..\..\venv\Scripts\python.exe" (
     for %%i in ("..\..\venv\Scripts\python.exe") do set "PYTHON_CMD=%%~fi"
     set "INSTALL_TYPE=Standard venv"
@@ -100,7 +100,7 @@ echo   Standard:    ..\..\venv\Scripts\python.exe
 echo.
 echo Please verify:
 echo   1. ComfyUI is installed correctly
-echo   2. This script is in: ComfyUI/custom_nodes/YOUR_NODE/
+echo   2. This script is in: ComfyUI/custom_nodes/mc-pbr-master-main/
 echo.
 pause
 exit /b 1
