@@ -127,25 +127,20 @@ All nodes appear under the **`MC_PBR_Master`** category in the ComfyUI node brow
 
 ---
 
-## 🧩 Typical Workflow
+## 🧩 Workflows
 
 ```
-[Image / AI Generation]
-        │
-        ├─► MC: Height Map ──► MC: Height to Normal
-        │         │
-        │         └──► MC: Ambient Occlusion
-        │
-        ├─► MC: Roughness
-        ├─► MC: Metallic
-        │
-        ├─► MC: RGB Channel Packer  (ORM texture)
-        │
-        ├─► MC: AI Image Upscale    (optional)
-        ├─► MC: Tile Checker        (validate seamless)
-        ├─► MC: 3D Texture Preview  (real-time WebGL)
-        │
-        └─► MC: PBR Texture Export  (save to disk)
+Find PBR MAP Generation Workflow.json above.
+
+[Step 1]
+Base Map Generation
+
+[Step 2]
+Upscale
+
+[Step 3]
+Generate and Export PBR Texture Maps
+
 ```
 ---
 
