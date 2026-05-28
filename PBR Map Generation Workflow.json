@@ -1,0 +1,1592 @@
+{
+  "id": "507acedf-4d72-432e-8bf0-eed774dcc6c3",
+  "revision": 0,
+  "last_node_id": 88,
+  "last_link_id": 174,
+  "nodes": [
+    {
+      "flags": [],
+      "id": 37,
+      "inputs": [
+        {
+          "link": 128,
+          "name": "R",
+          "shape": 7,
+          "type": "IMAGE"
+        },
+        {
+          "link": 129,
+          "name": "G",
+          "shape": 7,
+          "type": "IMAGE"
+        },
+        {
+          "link": 130,
+          "name": "B",
+          "shape": 7,
+          "type": "IMAGE"
+        }
+      ],
+      "mode": 0,
+      "order": 27,
+      "outputs": [
+        {
+          "links": [
+            116
+          ],
+          "name": "IMAGE",
+          "type": "IMAGE"
+        }
+      ],
+      "pos": [
+        2933.6759976043104,
+        1296.9246852242654
+      ],
+      "properties": {
+        "Node name for S&R": "MC_ChannelPacker"
+      },
+      "size": [
+        207.2984375,
+        66
+      ],
+      "type": "MC_ChannelPacker",
+      "widgets_values": []
+    },
+    {
+      "flags": [],
+      "id": 27,
+      "inputs": [
+        {
+          "link": 131,
+          "name": "BaseColor",
+          "shape": 7,
+          "type": "IMAGE"
+        },
+        {
+          "link": null,
+          "name": "Roughness",
+          "shape": 7,
+          "type": "IMAGE"
+        },
+        {
+          "link": null,
+          "name": "Metallic",
+          "shape": 7,
+          "type": "IMAGE"
+        },
+        {
+          "link": null,
+          "name": "AmbientOcclusion",
+          "shape": 7,
+          "type": "IMAGE"
+        },
+        {
+          "link": null,
+          "name": "ORM",
+          "shape": 7,
+          "type": "IMAGE"
+        },
+        {
+          "link": 132,
+          "name": "Normal",
+          "shape": 7,
+          "type": "IMAGE"
+        },
+        {
+          "link": null,
+          "name": "Displacement",
+          "shape": 7,
+          "type": "IMAGE"
+        }
+      ],
+      "mode": 0,
+      "order": 28,
+      "outputs": [],
+      "pos": [
+        3460.211477650325,
+        905.0757728656715
+      ],
+      "properties": {
+        "Node name for S&R": "MC_PBRTextureExport"
+      },
+      "size": [
+        270,
+        274
+      ],
+      "type": "MC_PBRTextureExport",
+      "widgets_values": [
+        "output/MicroCreativity_PBR",
+        "Material",
+        "png",
+        "8-bit"
+      ]
+    },
+    {
+      "flags": [],
+      "id": 66,
+      "inputs": [
+        {
+          "link": null,
+          "name": "BaseColor",
+          "shape": 7,
+          "type": "IMAGE"
+        },
+        {
+          "link": null,
+          "name": "Roughness",
+          "shape": 7,
+          "type": "IMAGE"
+        },
+        {
+          "link": null,
+          "name": "Metallic",
+          "shape": 7,
+          "type": "IMAGE"
+        },
+        {
+          "link": null,
+          "name": "AmbientOcclusion",
+          "shape": 7,
+          "type": "IMAGE"
+        },
+        {
+          "link": 116,
+          "name": "ORM",
+          "shape": 7,
+          "type": "IMAGE"
+        },
+        {
+          "link": null,
+          "name": "Normal",
+          "shape": 7,
+          "type": "IMAGE"
+        },
+        {
+          "link": 133,
+          "name": "Displacement",
+          "shape": 7,
+          "type": "IMAGE"
+        }
+      ],
+      "mode": 0,
+      "order": 29,
+      "outputs": [],
+      "pos": [
+        3461.51337551088,
+        1225.1113291556458
+      ],
+      "properties": {
+        "Node name for S&R": "MC_PBRTextureExport"
+      },
+      "size": [
+        270,
+        274
+      ],
+      "type": "MC_PBRTextureExport",
+      "widgets_values": [
+        "output/MicroCreativity_PBR",
+        "Material",
+        "tiff",
+        "16-bit"
+      ]
+    },
+    {
+      "flags": [],
+      "id": 8,
+      "inputs": [
+        {
+          "link": 7,
+          "name": "images",
+          "type": "IMAGE"
+        }
+      ],
+      "mode": 0,
+      "order": 25,
+      "outputs": [
+        {
+          "links": [
+            126
+          ],
+          "name": "images",
+          "type": "IMAGE"
+        }
+      ],
+      "pos": [
+        1317.6862860446297,
+        1087.0316127739086
+      ],
+      "properties": {
+        "Node name for S&R": "MC_ImagePreviewPass"
+      },
+      "size": [
+        449.0906427911376,
+        482.63756990075694
+      ],
+      "type": "MC_ImagePreviewPass",
+      "widgets_values": []
+    },
+    {
+      "flags": [],
+      "id": 4,
+      "inputs": [
+        {
+          "link": 17,
+          "name": "image",
+          "type": "IMAGE"
+        }
+      ],
+      "mode": 0,
+      "order": 20,
+      "outputs": [
+        {
+          "links": [
+            7
+          ],
+          "name": "IMAGE",
+          "type": "IMAGE"
+        }
+      ],
+      "pos": [
+        1015.6615673524783,
+        1087.0117898053088
+      ],
+      "properties": {
+        "Node name for S&R": "MC_RoughnessGen"
+      },
+      "size": [
+        240,
+        332
+      ],
+      "type": "MC_RoughnessGen",
+      "widgets_values": [
+        "Green",
+        "Yes",
+        0.19017053489451086,
+        1,
+        1.0971296125149015
+      ]
+    },
+    {
+      "id": 75,
+      "type": "SaveImage",
+      "pos": [
+        650,
+        -460
+      ],
+      "size": [
+        403.125,
+        484.234375
+      ],
+      "flags": {},
+      "order": 21,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 161
+        }
+      ],
+      "outputs": [],
+      "properties": {},
+      "widgets_values": [
+        "T_"
+      ]
+    },
+    {
+      "flags": [],
+      "id": 82,
+      "inputs": [
+        {
+          "link": 167,
+          "name": "images",
+          "type": "IMAGE"
+        }
+      ],
+      "mode": 0,
+      "order": 14,
+      "outputs": [
+        {
+          "links": [
+            161
+          ],
+          "name": "images",
+          "type": "IMAGE"
+        }
+      ],
+      "pos": [
+        80,
+        -460
+      ],
+      "properties": {
+        "Node name for S&R": "MC_ImagePreviewPass"
+      },
+      "size": [
+        449.0906427911376,
+        482.63756990075694
+      ],
+      "type": "MC_ImagePreviewPass",
+      "widgets_values": []
+    },
+    {
+      "id": 36,
+      "type": "GeminiImage2Node",
+      "pos": [
+        -380,
+        -460
+      ],
+      "size": [
+        400,
+        348
+      ],
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": null
+        },
+        {
+          "name": "files",
+          "shape": 7,
+          "type": "GEMINI_INPUT_FILES",
+          "link": null
+        },
+        {
+          "name": "prompt",
+          "type": "STRING",
+          "widget": {
+            "name": "prompt"
+          },
+          "link": 54
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            167
+          ]
+        },
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "GeminiImage2Node"
+      },
+      "widgets_values": [
+        "",
+        "gemini-3-pro-image-preview",
+        1043300002858174,
+        "randomize",
+        "1:1",
+        "1K",
+        "IMAGE+TEXT",
+        "You are an expert image-generation engine. You must ALWAYS produce an image.\nInterpret all user input—regardless of format, intent, or abstraction—as literal visual directives for image composition.\nIf a prompt is conversational or lacks specific visual details, you must creatively invent a concrete visual scenario that depicts the concept.\nPrioritize generating the visual representation above any text, formatting, or conversational requests."
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "flags": [],
+      "id": 35,
+      "inputs": [],
+      "mode": 0,
+      "order": 0,
+      "outputs": [
+        {
+          "links": [
+            54
+          ],
+          "name": "prompt",
+          "type": "STRING"
+        }
+      ],
+      "pos": [
+        -840,
+        -418.78459999999995
+      ],
+      "properties": {
+        "Node name for S&R": "MC_AlbedoPrompt"
+      },
+      "size": [
+        350,
+        82
+      ],
+      "type": "MC_AlbedoPrompt",
+      "widgets_values": [
+        "Marble",
+        "Nano Banana Pro / Imagen 4"
+      ]
+    },
+    {
+      "flags": [],
+      "id": 5,
+      "inputs": [
+        {
+          "link": 171,
+          "name": "image",
+          "type": "IMAGE"
+        }
+      ],
+      "mode": 0,
+      "order": 11,
+      "outputs": [],
+      "pos": [
+        643.9043858154296,
+        101.39850354614263
+      ],
+      "properties": {
+        "Node name for S&R": "MC_SeamlessChecker"
+      },
+      "size": [
+        412.6666259765625,
+        482
+      ],
+      "type": "MC_SeamlessChecker",
+      "widgets_values": [
+        "3x3"
+      ]
+    },
+    {
+      "id": 87,
+      "type": "LoadImageOutput",
+      "pos": [
+        183.9043858154297,
+        101.39850354614263
+      ],
+      "size": [
+        337.25,
+        424
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            171
+          ]
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadImageOutput"
+      },
+      "widgets_values": [
+        "T__00002_.png [output]",
+        false,
+        "refresh",
+        "image"
+      ]
+    },
+    {
+      "flags": [],
+      "id": 71,
+      "inputs": [
+        {
+          "link": 166,
+          "name": "base_color",
+          "type": "IMAGE"
+        },
+        {
+          "link": 126,
+          "name": "roughness",
+          "shape": 7,
+          "type": "IMAGE"
+        },
+        {
+          "link": 135,
+          "name": "metallic",
+          "shape": 7,
+          "type": "IMAGE"
+        },
+        {
+          "link": 138,
+          "name": "occlusion",
+          "shape": 7,
+          "type": "IMAGE"
+        },
+        {
+          "link": 127,
+          "name": "normal",
+          "shape": 7,
+          "type": "IMAGE"
+        },
+        {
+          "link": 139,
+          "name": "displacement",
+          "shape": 7,
+          "type": "IMAGE"
+        }
+      ],
+      "mode": 0,
+      "order": 26,
+      "outputs": [
+        {
+          "links": [
+            131
+          ],
+          "name": "base_color",
+          "type": "IMAGE"
+        },
+        {
+          "links": [
+            129
+          ],
+          "name": "roughness",
+          "type": "IMAGE"
+        },
+        {
+          "links": [
+            130
+          ],
+          "name": "metallic",
+          "type": "IMAGE"
+        },
+        {
+          "links": [
+            128
+          ],
+          "name": "occlusion",
+          "type": "IMAGE"
+        },
+        {
+          "links": [
+            132
+          ],
+          "name": "normal",
+          "type": "IMAGE"
+        },
+        {
+          "links": [
+            133
+          ],
+          "name": "displacement",
+          "type": "IMAGE"
+        }
+      ],
+      "pos": [
+        2254.37847664036,
+        909.1775544362732
+      ],
+      "properties": [],
+      "size": [
+        478.9727208251952,
+        656.1705583496091
+      ],
+      "type": "MC_TexturePreview3D",
+      "widgets_values": [
+        "Sphere",
+        ""
+      ]
+    },
+    {
+      "id": 77,
+      "type": "LoadImageOutput",
+      "pos": [
+        1252.9913680398317,
+        -424.0170260398314
+      ],
+      "size": [
+        454.578125,
+        552.03125
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            151
+          ]
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadImageOutput"
+      },
+      "widgets_values": [
+        "T__00002_.png [output]",
+        false,
+        "refresh",
+        "image"
+      ]
+    },
+    {
+      "id": 78,
+      "type": "SaveImage",
+      "pos": [
+        2362.991368039831,
+        -424.0170260398314
+      ],
+      "size": [
+        423.265625,
+        546.828125
+      ],
+      "flags": {},
+      "order": 15,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 152
+        }
+      ],
+      "outputs": [],
+      "properties": {},
+      "widgets_values": [
+        "Upscale_"
+      ]
+    },
+    {
+      "flags": [],
+      "id": 76,
+      "inputs": [
+        {
+          "link": 151,
+          "name": "image",
+          "type": "IMAGE"
+        }
+      ],
+      "mode": 0,
+      "order": 12,
+      "outputs": [
+        {
+          "links": [
+            152
+          ],
+          "name": "upscaled_image",
+          "type": "IMAGE"
+        }
+      ],
+      "pos": [
+        1802.9913680398317,
+        -424.0170260398314
+      ],
+      "properties": {
+        "Node name for S&R": "MC_ImageUpscale"
+      },
+      "size": [
+        447.37678260510256,
+        545.3162436974487
+      ],
+      "type": "MC_ImageUpscale",
+      "widgets_values": [
+        "High Details",
+        "4x",
+        "128",
+        "Yes"
+      ]
+    },
+    {
+      "id": 79,
+      "type": "MarkdownNote",
+      "pos": [
+        -1654.7723010372076,
+        -526.227613138437
+      ],
+      "size": [
+        610,
+        810.359375
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {},
+      "widgets_values": [
+        "## Download Custom Node Pack\n- Download MC_PBR_Master node pack at [Github](https://github.com/soojungkn/mc-pbr-master)\n\n## Note\n- This workflow requires MicroCreativity's custom node pack, MC_PBR_Master.\n- Custom nodes are currently unavailable on Comfy Cloud.\n- AI Image Upscale node might not be able to use GPU accelaration depending on your cuda version. (currently supports 12.x version only)\n\n## Model links (for AI Image Upscale Node)\n- Download \"model.onnx\" from each link, and rename the files to each model name.\n\n**swin2SR models**\n\n- [swin2SR-classical-sr-x4-64](https://huggingface.co/Xenova/swin2SR-classical-sr-x4-64/tree/main/onnx)\n- [swin2SR-realworld-sr-x4](https://huggingface.co/Xenova/swin2SR-realworld-sr-x4-64-bsrgan-psnr/tree/main/onnx)\n- [swin2SR-lightweight-x2-64](https://huggingface.co/Xenova/swin2SR-lightweight-x2-64/tree/main/onnx)\n\n\n\nModel Storage Location\n\n```\n📂 ComfyUI/\n└── 📂 models/\n      └── 📂 upscale_models/\n             ├── swin2SR-classical-sr-x4-64.onnx\n             ├── swin2SR-realworld-sr-x4.onnx\n             └── swin2SR-lightweight-x2-64.onnx\n\n```\n\n## Report issue\nPlease report technical issues to support@microcreativity.xyz\n\n"
+      ],
+      "color": "#222",
+      "bgcolor": "#000"
+    },
+    {
+      "flags": [],
+      "id": 18,
+      "inputs": [],
+      "mode": 0,
+      "order": 5,
+      "outputs": [
+        {
+          "links": [
+            18
+          ],
+          "name": "value",
+          "type": "FLOAT"
+        }
+      ],
+      "pos": [
+        500,
+        1290
+      ],
+      "properties": {
+        "Node name for S&R": "MC_UniversalValue"
+      },
+      "size": [
+        270,
+        130
+      ],
+      "type": "MC_UniversalValue",
+      "widgets_values": [
+        0.15,
+        0,
+        1,
+        0.01
+      ]
+    },
+    {
+      "flags": [],
+      "id": 17,
+      "inputs": [
+        {
+          "link": 163,
+          "name": "image",
+          "type": "IMAGE"
+        },
+        {
+          "link": 18,
+          "name": "strength",
+          "type": "FLOAT",
+          "widget": {
+            "name": "strength"
+          }
+        }
+      ],
+      "mode": 0,
+      "order": 13,
+      "outputs": [
+        {
+          "links": [
+            17
+          ],
+          "name": "IMAGE",
+          "type": "IMAGE"
+        }
+      ],
+      "pos": [
+        500,
+        1090
+      ],
+      "properties": {
+        "Node name for S&R": "MC_ImageSharpen"
+      },
+      "size": [
+        270,
+        130
+      ],
+      "type": "MC_ImageSharpen",
+      "widgets_values": [
+        "UnsharpMask",
+        0.15,
+        1,
+        0
+      ]
+    },
+    {
+      "flags": [],
+      "id": 67,
+      "inputs": [
+        {
+          "link": 165,
+          "name": "image",
+          "type": "IMAGE"
+        }
+      ],
+      "mode": 0,
+      "order": 10,
+      "outputs": [
+        {
+          "links": [
+            122
+          ],
+          "name": "IMAGE",
+          "type": "IMAGE"
+        }
+      ],
+      "pos": [
+        500,
+        1670
+      ],
+      "properties": {
+        "Node name for S&R": "MC_MetallicGen"
+      },
+      "size": [
+        270,
+        332
+      ],
+      "type": "MC_MetallicGen",
+      "widgets_values": [
+        "Luminance",
+        "Yes",
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "flags": [],
+      "id": 68,
+      "inputs": [
+        {
+          "link": 122,
+          "name": "images",
+          "type": "IMAGE"
+        }
+      ],
+      "mode": 0,
+      "order": 18,
+      "outputs": [
+        {
+          "links": [
+            135
+          ],
+          "name": "images",
+          "type": "IMAGE"
+        }
+      ],
+      "pos": [
+        1300,
+        1670
+      ],
+      "properties": {
+        "Node name for S&R": "MC_ImagePreviewPass"
+      },
+      "size": [
+        473.07603698730406,
+        518.4114416503908
+      ],
+      "type": "MC_ImagePreviewPass",
+      "widgets_values": []
+    },
+    {
+      "flags": [],
+      "id": 33,
+      "inputs": [
+        {
+          "link": 50,
+          "name": "image",
+          "type": "IMAGE"
+        },
+        {
+          "link": 52,
+          "name": "amount",
+          "type": "FLOAT",
+          "widget": {
+            "name": "amount"
+          }
+        }
+      ],
+      "mode": 0,
+      "order": 15,
+      "outputs": [
+        {
+          "links": [
+            51
+          ],
+          "name": "IMAGE",
+          "type": "IMAGE"
+        }
+      ],
+      "pos": [
+        950,
+        2320
+      ],
+      "properties": {
+        "Node name for S&R": "MC_ImageBlur"
+      },
+      "size": [
+        270,
+        82
+      ],
+      "type": "MC_ImageBlur",
+      "widgets_values": [
+        "Gaussian",
+        5
+      ]
+    },
+    {
+      "flags": [],
+      "id": 34,
+      "inputs": [],
+      "mode": 0,
+      "order": 6,
+      "outputs": [
+        {
+          "links": [
+            52
+          ],
+          "name": "value",
+          "type": "FLOAT"
+        }
+      ],
+      "pos": [
+        950,
+        2460
+      ],
+      "properties": {
+        "Node name for S&R": "MC_UniversalValue"
+      },
+      "size": [
+        270,
+        130
+      ],
+      "type": "MC_UniversalValue",
+      "widgets_values": [
+        3,
+        0,
+        50,
+        0.1
+      ]
+    },
+    {
+      "flags": [],
+      "id": 29,
+      "inputs": [
+        {
+          "link": 164,
+          "name": "image",
+          "type": "IMAGE"
+        }
+      ],
+      "mode": 0,
+      "order": 9,
+      "outputs": [
+        {
+          "links": [
+            50,
+            136,
+            153
+          ],
+          "name": "IMAGE",
+          "type": "IMAGE"
+        }
+      ],
+      "pos": [
+        500,
+        2330
+      ],
+      "properties": {
+        "Node name for S&R": "MC_HeightGen"
+      },
+      "size": [
+        275.39352133589955,
+        357.0998768184322
+      ],
+      "type": "MC_HeightGen",
+      "widgets_values": [
+        "Luminance",
+        "No",
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "flags": [],
+      "id": 30,
+      "inputs": [
+        {
+          "link": 51,
+          "name": "images",
+          "type": "IMAGE"
+        }
+      ],
+      "mode": 0,
+      "order": 22,
+      "outputs": [
+        {
+          "links": [
+            139
+          ],
+          "name": "images",
+          "type": "IMAGE"
+        }
+      ],
+      "pos": [
+        1310,
+        2320
+      ],
+      "properties": {
+        "Node name for S&R": "MC_ImagePreviewPass"
+      },
+      "size": [
+        473.07603698730406,
+        518.4114416503908
+      ],
+      "type": "MC_ImagePreviewPass",
+      "widgets_values": []
+    },
+    {
+      "flags": [],
+      "id": 10,
+      "inputs": [
+        {
+          "link": 153,
+          "name": "image",
+          "type": "IMAGE"
+        },
+        {
+          "link": 38,
+          "name": "strength",
+          "type": "FLOAT",
+          "widget": {
+            "name": "strength"
+          }
+        }
+      ],
+      "mode": 0,
+      "order": 17,
+      "outputs": [
+        {
+          "links": [
+            9
+          ],
+          "name": "IMAGE",
+          "type": "IMAGE"
+        }
+      ],
+      "pos": [
+        990,
+        2960
+      ],
+      "properties": {
+        "Node name for S&R": "MC_HeightToNormal"
+      },
+      "size": [
+        270,
+        82
+      ],
+      "type": "MC_HeightToNormal",
+      "widgets_values": [
+        0.5,
+        "No (OpenGL)"
+      ]
+    },
+    {
+      "flags": [],
+      "id": 25,
+      "inputs": [],
+      "mode": 0,
+      "order": 7,
+      "outputs": [
+        {
+          "links": [
+            38
+          ],
+          "name": "value",
+          "type": "FLOAT"
+        }
+      ],
+      "pos": [
+        990,
+        3110
+      ],
+      "properties": {
+        "Node name for S&R": "MC_UniversalValue"
+      },
+      "size": [
+        270,
+        130
+      ],
+      "type": "MC_UniversalValue",
+      "widgets_values": [
+        0.1,
+        0,
+        1,
+        0.01
+      ]
+    },
+    {
+      "flags": [],
+      "id": 11,
+      "inputs": [
+        {
+          "link": 9,
+          "name": "images",
+          "type": "IMAGE"
+        }
+      ],
+      "mode": 0,
+      "order": 24,
+      "outputs": [
+        {
+          "links": [
+            127
+          ],
+          "name": "images",
+          "type": "IMAGE"
+        }
+      ],
+      "pos": [
+        1320,
+        2960
+      ],
+      "properties": {
+        "Node name for S&R": "MC_ImagePreviewPass"
+      },
+      "size": [
+        461.8673620109861,
+        505.29224761682076
+      ],
+      "type": "MC_ImagePreviewPass",
+      "widgets_values": []
+    },
+    {
+      "flags": [],
+      "id": 73,
+      "inputs": [
+        {
+          "link": 137,
+          "name": "images",
+          "type": "IMAGE"
+        }
+      ],
+      "mode": 0,
+      "order": 23,
+      "outputs": [
+        {
+          "links": [
+            138
+          ],
+          "name": "images",
+          "type": "IMAGE"
+        }
+      ],
+      "pos": [
+        1310,
+        3570
+      ],
+      "properties": {
+        "Node name for S&R": "MC_ImagePreviewPass"
+      },
+      "size": [
+        473.07603698730406,
+        518.4114416503908
+      ],
+      "type": "MC_ImagePreviewPass",
+      "widgets_values": []
+    },
+    {
+      "flags": [],
+      "id": 72,
+      "inputs": [
+        {
+          "link": 136,
+          "name": "image",
+          "type": "IMAGE"
+        }
+      ],
+      "mode": 0,
+      "order": 16,
+      "outputs": [
+        {
+          "links": [
+            137
+          ],
+          "name": "IMAGE",
+          "type": "IMAGE"
+        }
+      ],
+      "pos": [
+        991.9019617104574,
+        3569.510505113982
+      ],
+      "properties": {
+        "Node name for S&R": "MC_AOGenerator"
+      },
+      "size": [
+        270,
+        82
+      ],
+      "type": "MC_AOGenerator",
+      "widgets_values": [
+        1,
+        3
+      ]
+    },
+    {
+      "id": 88,
+      "type": "LoadImage",
+      "pos": [
+        -855.909415803417,
+        914.8171696173597
+      ],
+      "size": [
+        454.53125,
+        524.640625
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            172,
+            173,
+            174
+          ]
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "867ce142a24fce40656178c4b7d21a802c44d4df88a6cbdc074a4d48b45756fb.png",
+        "image"
+      ]
+    }
+  ],
+  "links": [
+    [
+      7,
+      4,
+      0,
+      8,
+      0,
+      "IMAGE"
+    ],
+    [
+      9,
+      10,
+      0,
+      11,
+      0,
+      "IMAGE"
+    ],
+    [
+      17,
+      17,
+      0,
+      4,
+      0,
+      "IMAGE"
+    ],
+    [
+      18,
+      18,
+      0,
+      17,
+      1,
+      "FLOAT"
+    ],
+    [
+      38,
+      25,
+      0,
+      10,
+      1,
+      "FLOAT"
+    ],
+    [
+      50,
+      29,
+      0,
+      33,
+      0,
+      "IMAGE"
+    ],
+    [
+      51,
+      33,
+      0,
+      30,
+      0,
+      "IMAGE"
+    ],
+    [
+      52,
+      34,
+      0,
+      33,
+      1,
+      "FLOAT"
+    ],
+    [
+      54,
+      35,
+      0,
+      36,
+      2,
+      "STRING"
+    ],
+    [
+      116,
+      37,
+      0,
+      66,
+      4,
+      "IMAGE"
+    ],
+    [
+      122,
+      67,
+      0,
+      68,
+      0,
+      "IMAGE"
+    ],
+    [
+      126,
+      8,
+      0,
+      71,
+      1,
+      "IMAGE"
+    ],
+    [
+      127,
+      11,
+      0,
+      71,
+      4,
+      "IMAGE"
+    ],
+    [
+      128,
+      71,
+      3,
+      37,
+      0,
+      "IMAGE"
+    ],
+    [
+      129,
+      71,
+      1,
+      37,
+      1,
+      "IMAGE"
+    ],
+    [
+      130,
+      71,
+      2,
+      37,
+      2,
+      "IMAGE"
+    ],
+    [
+      131,
+      71,
+      0,
+      27,
+      0,
+      "IMAGE"
+    ],
+    [
+      132,
+      71,
+      4,
+      27,
+      5,
+      "IMAGE"
+    ],
+    [
+      133,
+      71,
+      5,
+      66,
+      6,
+      "IMAGE"
+    ],
+    [
+      135,
+      68,
+      0,
+      71,
+      2,
+      "IMAGE"
+    ],
+    [
+      136,
+      29,
+      0,
+      72,
+      0,
+      "IMAGE"
+    ],
+    [
+      137,
+      72,
+      0,
+      73,
+      0,
+      "IMAGE"
+    ],
+    [
+      138,
+      73,
+      0,
+      71,
+      3,
+      "IMAGE"
+    ],
+    [
+      139,
+      30,
+      0,
+      71,
+      5,
+      "IMAGE"
+    ],
+    [
+      151,
+      77,
+      0,
+      76,
+      0,
+      "IMAGE"
+    ],
+    [
+      152,
+      76,
+      0,
+      78,
+      0,
+      "IMAGE"
+    ],
+    [
+      153,
+      29,
+      0,
+      10,
+      0,
+      "IMAGE"
+    ],
+    [
+      161,
+      82,
+      0,
+      75,
+      0,
+      "IMAGE"
+    ],
+    [
+      167,
+      36,
+      0,
+      82,
+      0,
+      "IMAGE"
+    ],
+    [
+      171,
+      87,
+      0,
+      5,
+      0,
+      "IMAGE"
+    ],
+    [
+      172,
+      88,
+      0,
+      17,
+      0,
+      "IMAGE"
+    ],
+    [
+      173,
+      88,
+      0,
+      67,
+      0,
+      "IMAGE"
+    ],
+    [
+      174,
+      88,
+      0,
+      29,
+      0,
+      "IMAGE"
+    ]
+  ],
+  "groups": [
+    {
+      "id": 1,
+      "title": "Base Color Map Generation",
+      "bounding": [
+        -870,
+        -560,
+        2023.920656319613,
+        1198.4213313908997
+      ],
+      "color": "#A88",
+      "flags": []
+    },
+    {
+      "id": 2,
+      "title": "AI Upscale (Local)",
+      "bounding": [
+        1233.895491505584,
+        -553.0833798246463,
+        1568.8542925073834,
+        1161.5339244419065
+      ],
+      "color": "#8A8",
+      "flags": []
+    },
+    {
+      "id": 3,
+      "title": "PBR Map Generation",
+      "bounding": [
+        -880.5439448179476,
+        831.4757728656715,
+        4670.645507801199,
+        3340.3596619864784
+      ],
+      "color": "#3f789e",
+      "flags": []
+    }
+  ],
+  "config": [],
+  "extra": {
+    "ds": {
+      "scale": 0.15818189480969544,
+      "offset": [
+        3978.16396451324,
+        1545.4701229651546
+      ]
+    },
+    "frontendVersion": "1.44.18",
+    "workflowRendererVersion": "LG",
+    "VHS_latentpreview": false,
+    "VHS_latentpreviewrate": 0,
+    "VHS_MetadataImage": true,
+    "VHS_KeepIntermediate": true
+  },
+  "version": 0.4
+}
